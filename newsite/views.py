@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'newsite/index.html', {})
+
+def courses(request):
+	return render(request, 'newsite/courses.html', {})
