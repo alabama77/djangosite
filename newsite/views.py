@@ -15,9 +15,9 @@ def courses(request):
 	return render(request, 'newsite/courses.html', context)
 
 
-def course_details(request):
+def course_details(request, lesson_slug):
 
-	lessons = Lesson.objects.all()
+	lessons = Category.objects.get(slug=lesson_slug)
 
 	context = {
 		"lessons" : lessons,

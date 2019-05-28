@@ -18,7 +18,7 @@ class Category(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return reverse('course_details', kwargs={'lesson_slug' : self.slug})
+		return reverse('coursedetails', kwargs={'lesson_slug' : self.slug})
 
 class Lesson(models.Model):
 
