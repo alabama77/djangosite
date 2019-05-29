@@ -107,15 +107,17 @@
               </p>
             </div>
           </div>
-          {% for category in categories %}
+          {% for lesson in lessons %}
           <div class="col-lg-4 col-md-6">
             <div class="other-feature-item">
               <i class="ti-key"></i>
-              <a href="#"><h4>{{ category.name }}</h4></a>
+              <a href="#"><h4>{{ lesson.title }}</h4></a>
               <div>
-                <p>
-                  {{ category.description_category }}
-                </p>
+                <div>
+                     Преродаватель: {{ lesson.teacher }}<br><br>
+                     Категория: {{ lesson.category }}<br><br>
+                     {{ lesson.description | safe }}<br><br>
+                </div>
               </div>
             </div>
           </div>
