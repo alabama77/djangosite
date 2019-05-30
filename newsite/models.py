@@ -6,8 +6,6 @@ from django.utils.text import slugify
 from django.contrib.auth.forms import UserCreationForm
 from ckeditor.fields import RichTextField
 from django.urls import reverse
-from django_bleach.models import BleachField
-
 
 class Category(models.Model):
 	name = models.CharField(max_length=100)
@@ -35,12 +33,15 @@ class Lesson(models.Model):
 	teacher = models.CharField(max_length=150, verbose_name='Преподователь')
 	title = models.CharField(max_length=250, verbose_name="Заголовк")
 	description = RichTextField(verbose_name='Краткое описание урока')
+	full_lesson_text = RichTextField(verbose_name='Полный текст урока')
 	slug = models.SlugField(max_length=50, verbose_name='Ссылка на урок')
 
 	class Meta:
 		verbose_name = 'Урок'
 		verbose_name_plural = 'Уроки'
 
+	def get_absolute_url(self):
+		return reverse('course_template', kwargs={ 'lesson_slug' : self.slug})
 
 	def __unicode__(self):
 		return self.title
