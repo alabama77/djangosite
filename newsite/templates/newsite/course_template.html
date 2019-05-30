@@ -4,17 +4,17 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>course</title>
+
+		<title>{{ lessons_text.title }}</title>
 		<link rel="stylesheet" href="{% static 'css/course_template.css' %}">
 	</head>
 
 	<body>
 		<div>
-			<h1>course_name</h1>
-			<p>something</p>
-			<p class="fist-of-type">textetxtetxtetxtetxtetxtetxtetxtetxtetxtet</p>
-			<a>author or what i dntknow</a>
-			
+			<h1>{{lesson_text.title}}</h1>
+			<p>{{ lesson_text.description | safe }}</p>
+			<p class="fist-of-type">{{ lesson_text.full_lesson_text | safe }}</p>
+			<a>Преподователь: {{ lesson_text.teacher }}</a>
 		</div>
 	</body>
 </html>

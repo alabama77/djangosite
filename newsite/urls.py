@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('courses/', views.courses, name='courses'),
     path('courses/<str:category_slug>/', views.course_view, name='category_detail'),
-    path('courses/<str:lesson_slug>/', views.lesson_view, name='course_template'),
+    path('courses/detail/<str:lesson_slug>', views.lesson_view, name='course_template'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

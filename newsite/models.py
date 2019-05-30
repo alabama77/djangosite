@@ -8,6 +8,7 @@ from ckeditor.fields import RichTextField
 from django.urls import reverse
 
 class Category(models.Model):
+
 	name = models.CharField(max_length=100)
 	description_category = models.TextField(verbose_name='Краткое описание категории')
 	slug = models.SlugField(max_length=50)
@@ -26,10 +27,11 @@ class Category(models.Model):
 		return self.name
 
 class Lesson(models.Model):
+
 	category = models.ForeignKey(
 		'Category', 
 		on_delete = models.CASCADE,)
-
+	
 	teacher = models.CharField(max_length=150, verbose_name='Преподователь')
 	title = models.CharField(max_length=250, verbose_name="Заголовк")
 	description = RichTextField(verbose_name='Краткое описание урока')
@@ -37,11 +39,12 @@ class Lesson(models.Model):
 	slug = models.SlugField(max_length=50, verbose_name='Ссылка на урок')
 
 	class Meta:
+
 		verbose_name = 'Урок'
 		verbose_name_plural = 'Уроки'
 
 	def get_absolute_url(self):
-		return reverse('course_template', kwargs={ 'lesson_slug' : self.slug})
+		return reverse('course_template', kwargs={ 'lesson_slug' : self.slug })
 
 	def __unicode__(self):
 		return self.title

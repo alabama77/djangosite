@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Category, Lesson
 # Create your views here.
 
@@ -18,14 +18,18 @@ def course_view(request, category_slug):
 
 	category = Category.objects.get(slug=category_slug)
 	lessons = Lesson.objects.all()
-	context = { "category" : category, "lessons" : lessons, }
+	context = { 
+		"category" : category,
+		"lessons" : lessons, 
+	 	}
 
 	return render(request, 'newsite/coursedetails.html', context)
 
 def lesson_view(request, lesson_slug):
 
-	lesson_text = Lesson.objects.all()
-	lesson = Lesson.objects.get(slug=lesson_slug)
-	context = {'lesson' : lesson, 'lesson_text' : lesson_text,}
+	lesson_text = get_object_or_404(Lesson, slug=lesson_slug)
+	context = { 
+		'lesson_text' : lesson_text,
+		 }
 
-	return render(request, 'newsite/coursedetails.html')
+	return render(request, 'newsite/course_template.html', context)
