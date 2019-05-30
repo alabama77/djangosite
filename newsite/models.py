@@ -17,7 +17,7 @@ class Category(models.Model):
 		verbose_name_plural = 'Категории'
 
 	def get_absolute_url(self):
-		return reverse('coursedetails', kwargs={'category_slug' : self.slug})
+		return reverse('category_detail', kwargs={'category_slug' : self.slug})
 
 	def __unicode__(self):
 		return self.name

@@ -11,29 +11,21 @@ def courses(request):
 	context = { "categories" : categories,
 
 				}
-
 	return render(request, 'newsite/courses.html', context)
 
-def categories_view(request, category_slug):
+
+def course_view(request, category_slug):
 
 	category = Category.objects.get(slug=category_slug)
 	lessons = Lesson.objects.all()
+	context = { "category" : category, "lessons" : lessons, }
 
-	context = {
-		"lessons" : lessons,
-		"category" : category,
-	}
 	return render(request, 'newsite/coursedetails.html', context)
 
-def lessons_view(request, category_slug='algorithms', lesson_slug='algorithms_lesson_1'):
+def lesson_view(request, lesson_slug):
 
-	category = Category.objects.get(slug=category_slug)
-	lesson_url = Lesson.objects.get(slug=lesson_slug)
-	lessons = Lesson.objects.all()
+	lesson_text = Lesson.objects.all()
+	lesson = Lesson.objects.get(slug=lesson_slug)
+	context = {'lesson' : lesson, 'lesson_text' : lesson_text,}
 
-	context = {
-		"lesson_url" : lesson_url,
-		"lessons" : lessons,
-		"category" : category,
-	}
-	return render(request, 'newsite/coursedetails.html', context)
+	return render(request, 'newsite/coursedetails.html')
