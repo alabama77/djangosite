@@ -5,6 +5,7 @@ from django.views.generic.edit import FormView
 from django.utils.text import slugify
 from django.contrib.auth.forms import UserCreationForm
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 
 class Category(models.Model):
@@ -31,11 +32,11 @@ class Lesson(models.Model):
 	category = models.ForeignKey(
 		'Category', 
 		on_delete = models.CASCADE,)
-	
+
 	teacher = models.CharField(max_length=150, verbose_name='Преподователь')
 	title = models.CharField(max_length=250, verbose_name="Заголовк")
 	description = RichTextField(verbose_name='Краткое описание урока')
-	full_lesson_text = RichTextField(verbose_name='Полный текст урока')
+	full_lesson_text = RichTextUploadingField(verbose_name='Полный текст урока')
 	slug = models.SlugField(max_length=50, verbose_name='Ссылка на урок')
 
 	class Meta:

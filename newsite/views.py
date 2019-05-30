@@ -16,8 +16,8 @@ def courses(request):
 
 def course_view(request, category_slug):
 
-	category = Category.objects.get(slug=category_slug)
-	lessons = Lesson.objects.all()
+	category = get_object_or_404(Category, slug=category_slug)
+	lessons = Lesson.objects.filter(category__slug__contains=category_slug)
 	context = { 
 		"category" : category,
 		"lessons" : lessons, 
