@@ -18,9 +18,9 @@ def course_view(request, category_slug):
 
 	category = get_object_or_404(Category, slug=category_slug)
 	lessons = Lesson.objects.filter(category__slug__contains=category_slug)
-	context = { 
+	context = {
 		"category" : category,
-		"lessons" : lessons, 
+		"lessons" : lessons,
 	 	}
 
 	return render(request, 'newsite/coursedetails.html', context)
@@ -28,7 +28,7 @@ def course_view(request, category_slug):
 def lesson_view(request, lesson_slug):
 
 	lesson_text = get_object_or_404(Lesson, slug=lesson_slug)
-	context = { 
+	context = {
 		'lesson_text' : lesson_text,
 		 }
 

@@ -11,11 +11,13 @@ from django.urls import reverse
 class Category(models.Model):
 
 	name = models.CharField(max_length=100)
-	description_category = models.TextField(verbose_name='Краткое описание категории')
+	description_category = models.TextField(
+		verbose_name='Краткое описание категории'
+		)
 	slug = models.SlugField(max_length=50)
 
 	class Meta:
-		verbose_name = 'Катгория'
+		verbose_name = 'Категория'
 		verbose_name_plural = 'Категории'
 
 	def get_absolute_url(self):
@@ -30,7 +32,7 @@ class Category(models.Model):
 class Lesson(models.Model):
 
 	category = models.ForeignKey(
-		'Category', 
+		'Category',
 		on_delete = models.CASCADE,)
 
 	teacher = models.CharField(max_length=150, verbose_name='Преподователь')
@@ -66,9 +68,3 @@ class Lesson_detail(models.Model):
 
 	def __str__(self):
 		return self.full_lesson_text
-
-
-
-
-
-
