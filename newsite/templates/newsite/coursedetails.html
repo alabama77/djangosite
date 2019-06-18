@@ -40,7 +40,7 @@
     <nav class="navbar navbar-expand-lg  navbar-light">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="img/logo.png" alt="" />
+          <img src="{% static 'img/logo.png' %}" alt="" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,10 +49,13 @@
 
         <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="#">Главная</a></li>
+            <li><a href="http://www.pfurtk.ru/#">О нас</a></li>
+            <li><a href="courses">Курсы</a></li>
             <!-- Dropdown -->
+            <li><a href="http://pfurtk.ru/kontakt">Контакты</a></li>
+            <li><a href="admin">Регистрация</a></li>
+
             <li>
               <button class="search">
                 <span class="lnr lnr-magnifier" id="search"></span>
@@ -72,7 +75,7 @@
       </div>
     </div>
   </header>
-
+  
   <section class="other-feature-area">
       <div class="container">
         <div class="feature-inner row">
